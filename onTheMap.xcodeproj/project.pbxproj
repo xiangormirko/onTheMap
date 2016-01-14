@@ -18,6 +18,19 @@
 		CDF28BE31C47BD21001EF54B /* OTMHelpler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BE21C47BD21001EF54B /* OTMHelpler.swift */; };
 		CDF28BE51C47CCC1001EF54B /* OTMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BE41C47CCC1001EF54B /* OTMView.swift */; };
 		CDF28BE91C47D2D5001EF54B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BE81C47D2D5001EF54B /* MapViewController.swift */; };
+		CDF28BEC1C47F760001EF54B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BEA1C47F760001EF54B /* Bolts.framework */; };
+		CDF28BED1C47F760001EF54B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BEB1C47F760001EF54B /* Parse.framework */; };
+		CDF28BEF1C47F7AF001EF54B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BEE1C47F7AF001EF54B /* AudioToolbox.framework */; };
+		CDF28BF11C47F7B6001EF54B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BF01C47F7B6001EF54B /* CFNetwork.framework */; };
+		CDF28BF31C47F7BC001EF54B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BF21C47F7BC001EF54B /* CoreGraphics.framework */; };
+		CDF28BF51C47F7C2001EF54B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BF41C47F7C2001EF54B /* CoreLocation.framework */; };
+		CDF28BF71C47F7C7001EF54B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BF61C47F7C7001EF54B /* QuartzCore.framework */; };
+		CDF28BF91C47F7CD001EF54B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BF81C47F7CD001EF54B /* Security.framework */; };
+		CDF28BFB1C47F7D3001EF54B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BFA1C47F7D3001EF54B /* StoreKit.framework */; };
+		CDF28BFD1C47F7D9001EF54B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BFC1C47F7D9001EF54B /* SystemConfiguration.framework */; };
+		CDF28BFF1C47F7E0001EF54B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28BFE1C47F7E0001EF54B /* libz.tbd */; };
+		CDF28C011C47F7E8001EF54B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF28C001C47F7E8001EF54B /* libsqlite3.tbd */; };
+		CDF28C041C481FC6001EF54B /* OTCLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28C031C481FC6001EF54B /* OTCLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +68,19 @@
 		CDF28BE21C47BD21001EF54B /* OTMHelpler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMHelpler.swift; sourceTree = "<group>"; };
 		CDF28BE41C47CCC1001EF54B /* OTMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMView.swift; sourceTree = "<group>"; };
 		CDF28BE81C47D2D5001EF54B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CDF28BEA1C47F760001EF54B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		CDF28BEB1C47F760001EF54B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		CDF28BEE1C47F7AF001EF54B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CDF28BF01C47F7B6001EF54B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CDF28BF21C47F7BC001EF54B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CDF28BF41C47F7C2001EF54B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CDF28BF61C47F7C7001EF54B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CDF28BF81C47F7CD001EF54B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CDF28BFA1C47F7D3001EF54B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CDF28BFC1C47F7D9001EF54B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CDF28BFE1C47F7E0001EF54B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CDF28C001C47F7E8001EF54B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CDF28C031C481FC6001EF54B /* OTCLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTCLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +88,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF28C011C47F7E8001EF54B /* libsqlite3.tbd in Frameworks */,
+				CDF28BFF1C47F7E0001EF54B /* libz.tbd in Frameworks */,
+				CDF28BFD1C47F7D9001EF54B /* SystemConfiguration.framework in Frameworks */,
+				CDF28BFB1C47F7D3001EF54B /* StoreKit.framework in Frameworks */,
+				CDF28BF91C47F7CD001EF54B /* Security.framework in Frameworks */,
+				CDF28BF71C47F7C7001EF54B /* QuartzCore.framework in Frameworks */,
+				CDF28BF51C47F7C2001EF54B /* CoreLocation.framework in Frameworks */,
+				CDF28BF31C47F7BC001EF54B /* CoreGraphics.framework in Frameworks */,
+				CDF28BF11C47F7B6001EF54B /* CFNetwork.framework in Frameworks */,
+				CDF28BEF1C47F7AF001EF54B /* AudioToolbox.framework in Frameworks */,
+				CDF28BED1C47F760001EF54B /* Parse.framework in Frameworks */,
+				CDF28BEC1C47F760001EF54B /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +127,7 @@
 				CDF28BC51C4798D8001EF54B /* onTheMapTests */,
 				CDF28BD01C4798D8001EF54B /* onTheMapUITests */,
 				CDF28BAF1C4798D8001EF54B /* Products */,
+				CDF28C021C47F806001EF54B /* frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +179,7 @@
 			children = (
 				CDF28BE01C47A6E9001EF54B /* OTMClient.swift */,
 				CDF28BE21C47BD21001EF54B /* OTMHelpler.swift */,
+				CDF28C031C481FC6001EF54B /* OTCLocation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,6 +199,25 @@
 				CDF28BE81C47D2D5001EF54B /* MapViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		CDF28C021C47F806001EF54B /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDF28C001C47F7E8001EF54B /* libsqlite3.tbd */,
+				CDF28BFE1C47F7E0001EF54B /* libz.tbd */,
+				CDF28BFC1C47F7D9001EF54B /* SystemConfiguration.framework */,
+				CDF28BFA1C47F7D3001EF54B /* StoreKit.framework */,
+				CDF28BF81C47F7CD001EF54B /* Security.framework */,
+				CDF28BF61C47F7C7001EF54B /* QuartzCore.framework */,
+				CDF28BF41C47F7C2001EF54B /* CoreLocation.framework */,
+				CDF28BF21C47F7BC001EF54B /* CoreGraphics.framework */,
+				CDF28BF01C47F7B6001EF54B /* CFNetwork.framework */,
+				CDF28BEE1C47F7AF001EF54B /* AudioToolbox.framework */,
+				CDF28BEA1C47F760001EF54B /* Bolts.framework */,
+				CDF28BEB1C47F760001EF54B /* Parse.framework */,
+			);
+			name = frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF28C041C481FC6001EF54B /* OTCLocation.swift in Sources */,
 				CDF28BB41C4798D8001EF54B /* LoginViewController.swift in Sources */,
 				CDF28BE91C47D2D5001EF54B /* MapViewController.swift in Sources */,
 				CDF28BE11C47A6E9001EF54B /* OTMClient.swift in Sources */,
@@ -437,6 +497,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = onTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XZM.onTheMap;
@@ -448,6 +512,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = onTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XZM.onTheMap;
