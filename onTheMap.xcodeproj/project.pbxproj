@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		CDF28BB21C4798D8001EF54B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BB11C4798D8001EF54B /* AppDelegate.swift */; };
-		CDF28BB41C4798D8001EF54B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BB31C4798D8001EF54B /* ViewController.swift */; };
+		CDF28BB41C4798D8001EF54B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BB31C4798D8001EF54B /* LoginViewController.swift */; };
 		CDF28BB71C4798D8001EF54B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF28BB51C4798D8001EF54B /* Main.storyboard */; };
 		CDF28BB91C4798D8001EF54B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF28BB81C4798D8001EF54B /* Assets.xcassets */; };
 		CDF28BBC1C4798D8001EF54B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF28BBA1C4798D8001EF54B /* LaunchScreen.storyboard */; };
 		CDF28BC71C4798D8001EF54B /* onTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BC61C4798D8001EF54B /* onTheMapTests.swift */; };
 		CDF28BD21C4798D8001EF54B /* onTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BD11C4798D8001EF54B /* onTheMapUITests.swift */; };
+		CDF28BE11C47A6E9001EF54B /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BE01C47A6E9001EF54B /* OTMClient.swift */; };
+		CDF28BE31C47BD21001EF54B /* OTMHelpler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BE21C47BD21001EF54B /* OTMHelpler.swift */; };
+		CDF28BE51C47CCC1001EF54B /* OTMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BE41C47CCC1001EF54B /* OTMView.swift */; };
+		CDF28BE91C47D2D5001EF54B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BE81C47D2D5001EF54B /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		CDF28BAE1C4798D8001EF54B /* onTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF28BB11C4798D8001EF54B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDF28BB31C4798D8001EF54B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CDF28BB31C4798D8001EF54B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDF28BB61C4798D8001EF54B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDF28BB81C4798D8001EF54B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDF28BBB1C4798D8001EF54B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,10 @@
 		CDF28BCD1C4798D8001EF54B /* onTheMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = onTheMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF28BD11C4798D8001EF54B /* onTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onTheMapUITests.swift; sourceTree = "<group>"; };
 		CDF28BD31C4798D8001EF54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDF28BE01C47A6E9001EF54B /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
+		CDF28BE21C47BD21001EF54B /* OTMHelpler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMHelpler.swift; sourceTree = "<group>"; };
+		CDF28BE41C47CCC1001EF54B /* OTMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMView.swift; sourceTree = "<group>"; };
+		CDF28BE81C47D2D5001EF54B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				CDF28BB11C4798D8001EF54B /* AppDelegate.swift */,
-				CDF28BB31C4798D8001EF54B /* ViewController.swift */,
+				CDF28BE61C47CCC8001EF54B /* View */,
+				CDF28BDF1C47A69E001EF54B /* Model */,
+				CDF28BE71C47D2A1001EF54B /* Controller */,
 				CDF28BB51C4798D8001EF54B /* Main.storyboard */,
 				CDF28BB81C4798D8001EF54B /* Assets.xcassets */,
 				CDF28BBA1C4798D8001EF54B /* LaunchScreen.storyboard */,
@@ -123,6 +133,32 @@
 				CDF28BD31C4798D8001EF54B /* Info.plist */,
 			);
 			path = onTheMapUITests;
+			sourceTree = "<group>";
+		};
+		CDF28BDF1C47A69E001EF54B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDF28BE01C47A6E9001EF54B /* OTMClient.swift */,
+				CDF28BE21C47BD21001EF54B /* OTMHelpler.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CDF28BE61C47CCC8001EF54B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CDF28BE41C47CCC1001EF54B /* OTMView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CDF28BE71C47D2A1001EF54B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CDF28BB31C4798D8001EF54B /* LoginViewController.swift */,
+				CDF28BE81C47D2D5001EF54B /* MapViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDF28BB41C4798D8001EF54B /* ViewController.swift in Sources */,
+				CDF28BB41C4798D8001EF54B /* LoginViewController.swift in Sources */,
+				CDF28BE91C47D2D5001EF54B /* MapViewController.swift in Sources */,
+				CDF28BE11C47A6E9001EF54B /* OTMClient.swift in Sources */,
 				CDF28BB21C4798D8001EF54B /* AppDelegate.swift in Sources */,
+				CDF28BE31C47BD21001EF54B /* OTMHelpler.swift in Sources */,
+				CDF28BE51C47CCC1001EF54B /* OTMView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
