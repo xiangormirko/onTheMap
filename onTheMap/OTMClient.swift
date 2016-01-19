@@ -16,6 +16,8 @@ class OTMClient : NSObject {
     /* Authentication state */
     var sessionID : String? = nil
     
+    var locations = [OTMLocation]()
+    
     override init() {
         session = NSURLSession.sharedSession()
         super.init()
