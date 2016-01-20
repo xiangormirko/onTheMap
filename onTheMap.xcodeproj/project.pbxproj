@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CD1E2D491C4B9DEE00A16FB5 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1E2D481C4B9DEE00A16FB5 /* LocationTableViewController.swift */; };
+		CD414A471C4E88B200EB1F4B /* infoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD414A461C4E88B200EB1F4B /* infoPostingViewController.swift */; };
+		CD414A491C4E8AC300EB1F4B /* locationFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD414A481C4E8AC300EB1F4B /* locationFinderViewController.swift */; };
 		CDF28BB21C4798D8001EF54B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BB11C4798D8001EF54B /* AppDelegate.swift */; };
 		CDF28BB41C4798D8001EF54B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BB31C4798D8001EF54B /* LoginViewController.swift */; };
 		CDF28BB71C4798D8001EF54B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF28BB51C4798D8001EF54B /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		CD1E2D481C4B9DEE00A16FB5 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		CD414A461C4E88B200EB1F4B /* infoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoPostingViewController.swift; sourceTree = "<group>"; };
+		CD414A481C4E8AC300EB1F4B /* locationFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationFinderViewController.swift; sourceTree = "<group>"; };
 		CDF28BAE1C4798D8001EF54B /* onTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF28BB11C4798D8001EF54B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDF28BB31C4798D8001EF54B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				CDF28BB31C4798D8001EF54B /* LoginViewController.swift */,
 				CDF28BE81C47D2D5001EF54B /* MapViewController.swift */,
 				CD1E2D481C4B9DEE00A16FB5 /* LocationTableViewController.swift */,
+				CD414A461C4E88B200EB1F4B /* infoPostingViewController.swift */,
+				CD414A481C4E8AC300EB1F4B /* locationFinderViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -359,7 +365,9 @@
 				CDF28BE91C47D2D5001EF54B /* MapViewController.swift in Sources */,
 				CDF28BE11C47A6E9001EF54B /* OTMClient.swift in Sources */,
 				CD1E2D491C4B9DEE00A16FB5 /* LocationTableViewController.swift in Sources */,
+				CD414A471C4E88B200EB1F4B /* infoPostingViewController.swift in Sources */,
 				CDF28BB21C4798D8001EF54B /* AppDelegate.swift in Sources */,
+				CD414A491C4E8AC300EB1F4B /* locationFinderViewController.swift in Sources */,
 				CDF28BE31C47BD21001EF54B /* OTMHelpler.swift in Sources */,
 				CDF28BE51C47CCC1001EF54B /* OTMView.swift in Sources */,
 			);

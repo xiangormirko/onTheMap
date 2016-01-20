@@ -137,7 +137,14 @@ class LoginViewController: UIViewController {
                 print("Login failed.")
                 return
             }
-            
+            if let studentNumber = parsedResult["account"]!!["key"] as? String {
+                
+                self.appDelegate.studentID = studentNumber
+                print(self.appDelegate.studentID)
+            } else {
+                print("no student id found")
+            }
+
             /* 6. Use the data! */
             self.completeLogin()
 
@@ -150,7 +157,7 @@ class LoginViewController: UIViewController {
         dispatch_async(dispatch_get_main_queue(), {
             self.debugTextLabel.text = ""
             self.setUIEnabled(enabled: true)
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ManagerNavigationController") as! UINavigationController
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ManagerNavigationController") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
         })
     }

@@ -14,6 +14,7 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tableView: UITableView!
 
     var locations = [OTMLocation]()
+    let url = "https://api.parse.com/1/classes/StudentLocation"
 
     
     override func viewDidLoad() {
@@ -25,7 +26,7 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
 
         self.automaticallyAdjustsScrollViewInsets = false
         
-        OTMClient.sharedInstance().getSudentLocations { result, error in
+        OTMClient.sharedInstance().getRequestParse(url) { result, error in
             if let results = result["results"] as? [[String : AnyObject]] {
                 let locationsFromResults = OTMLocation.locationsFromResults(results)
                 self.locations = locationsFromResults
@@ -65,7 +66,7 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
         
         // Set the name and image
         cell.textLabel?.text = location.firstName! + location.lastName!
-        cell.imageView!.image = UIImage(named: "location")
+        cell.imageView!.image = UIImage(named: "locs")
         
         // If the cell has a detail label, we will put the evil scheme in.
         if let detailTextLabel = cell.detailTextLabel {

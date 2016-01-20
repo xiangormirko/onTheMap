@@ -22,8 +22,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         var annotations = [MKPointAnnotation]()
+        let url = "https://api.parse.com/1/classes/StudentLocation"
         
-        OTMClient.sharedInstance().getSudentLocations { result, error in
+        OTMClient.sharedInstance().getRequestParse(url) { result, error in
             if let results = result["results"] as? [[String : AnyObject]] {
                 let locations = OTMLocation.locationsFromResults(results)
                 
@@ -62,10 +63,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        navigationController?.navigationBar.hidden = false
-    }
-    
+
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"

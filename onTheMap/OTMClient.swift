@@ -25,8 +25,8 @@ class OTMClient : NSObject {
     
     
     
-    func getSudentLocations(completionHandler: (result: AnyObject!, error: NSError?) ->  Void) -> NSURLSessionTask {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
+    func getRequestParse(url: String, completionHandler: (result: AnyObject!, error: NSError?) ->  Void) -> NSURLSessionTask {
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
 
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -71,6 +71,8 @@ class OTMClient : NSObject {
         return task
 
     }
+    
+    
     
 
     /* Helper: Given raw JSON, return a usable Foundation object */
