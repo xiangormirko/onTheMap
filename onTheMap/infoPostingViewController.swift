@@ -28,20 +28,21 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
     var url = "https://www.udacity.com/api/users/"
     var appDelegate: AppDelegate!
     var studentID: String? = nil
+    var latitude: Double? = nil
+    var longitude: Double? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         textView.delegate = self
         
-        print(location)
         textView.text = "Insert your comment or URL"
         textView.textColor = UIColor.lightGrayColor()
         textView.textAlignment = .Center
         
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         studentID = self.appDelegate.studentID
-        print(studentID)
+
 
         
     }
@@ -58,6 +59,9 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
             }
             if let placemark = placemarks?.first {
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                self.latitude = placemark.location?.coordinate.latitude
+                self.longitude = placemark.location?.coordinate.longitude
+                
                 let region = MKCoordinateRegion(center: coordinates, span: self.span)
                 self.mapView.setRegion(region, animated: true)
                 self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
@@ -67,9 +71,11 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
     
     
     @IBAction func postLocation(sender: AnyObject) {
-        print("student id is")
-        print(studentID)
         getUserInfo(self.studentID!)
+        self.submitButton.enabled = false
+        self.submitButton.backgroundColor = UIColor.lightGrayColor()
+        self.submitButton.setTitle("Wait...", forState: .Normal)
+        
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -142,10 +148,34 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
                 return
             }
             /* 6. Use the data! */
+            self.appDelegate.studentInfo.firstName = results!["first_name"] as? String
+            self.appDelegate.studentInfo.lastName = results!["last_name"] as? String
+            self.appDelegate.studentInfo.mapString = self.location 
+            self.appDelegate.studentInfo.uniqueKey = self.appDelegate.studentID
+            self.appDelegate.studentInfo.mediaURL = self.textView.text
+            self.appDelegate.studentInfo.longitude = self.longitude
+            self.appDelegate.studentInfo.latitude = self.latitude
             
-            print(results)
+            print(self.appDelegate.studentInfo)
+            self.postUserInfo(self.appDelegate.studentInfo)
+            
         }
         task.resume()
+        
+    }
+    
+    func postUserInfo(studentInfo: OTMCoreUserInfo) {
+
+        let httpB = "{\"uniqueKey\": \"\(studentInfo.uniqueKey!)\", \"firstName\": \"\(studentInfo.firstName!)\", \"lastName\": \"\(studentInfo.lastName!)\",\"mapString\": \"\(studentInfo.mapString!)\", \"mediaURL\": \"\(studentInfo.mediaURL!)\",\"latitude\": \(studentInfo.latitude!), \"longitude\": \(studentInfo.longitude!)}"
+        print(httpB)
+        OTMClient.sharedInstance().postRequestParse(httpB) { result, error in
+            if result["objectId"] != nil {
+                print("dismissing view controller")
+                print(result)
+                self.dismissViewControllerAnimated(false, completion: nil)
+                
+            }
+        }
         
     }
     

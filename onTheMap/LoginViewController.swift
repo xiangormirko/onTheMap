@@ -118,12 +118,12 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            /* GUARD: Did TheMovieDB return an error? */
+            /* GUARD: Did Udacity return an error? */
             guard (parsedResult.objectForKey("status_code") == nil) else {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.setUIEnabled(enabled: true)
                 }
-                print("TheMovieDB returned an error. See the status_code and status_message in \(parsedResult)")
+                print("Udacity returned an error. See the status_code and status_message in \(parsedResult)")
                 return
             }
             

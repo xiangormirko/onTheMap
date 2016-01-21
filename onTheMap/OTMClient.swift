@@ -72,6 +72,56 @@ class OTMClient : NSObject {
 
     }
     
+    func postRequestParse(httpBody: String, completionHandler: (result: AnyObject!, error: NSError?) ->  Void) -> NSURLSessionTask {
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
+        request.HTTPMethod = "POST"
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        
+        let session = NSURLSession.sharedSession()
+        /* 4. Make the request */
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                print("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                if let response = response as? NSHTTPURLResponse {
+                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                } else if let response = response {
+                    print("Your request returned an invalid response! Response: \(response)!")
+                } else {
+                    print("Your request returned an invalid response!")
+                }
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                print("No data was returned by the request!")
+                return
+            }
+            
+            
+            /* 6. Use the data! */
+            OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            
+            
+        }
+        task.resume()
+        
+        return task
+        
+    }
+    
+    
     
     
 
@@ -89,26 +139,7 @@ class OTMClient : NSObject {
         completionHandler(result: parsedResult, error: nil)
     }
     
-    /* Helper function: Given a dictionary of parameters, convert to a string for a url */
-    class func escapedParameters(parameters: [String : AnyObject]) -> String {
-        
-        var urlVars = [String]()
-        
-        for (key, value) in parameters {
-            
-            /* Make sure that it is a string value */
-            let stringValue = "\(value)"
-            
-            /* Escape it */
-            let escapedValue = stringValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-            
-            /* Append it */
-            urlVars += [key + "=" + "\(escapedValue!)"]
-            
-        }
-        
-        return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
-    }
+
     
     // MARK: Shared Instance
     
