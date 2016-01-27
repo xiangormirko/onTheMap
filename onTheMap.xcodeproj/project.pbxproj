@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD12F6981C58B9E800CB3AA5 /* OTMExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD12F6971C58B9E800CB3AA5 /* OTMExtension.swift */; };
 		CD1E2D491C4B9DEE00A16FB5 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1E2D481C4B9DEE00A16FB5 /* LocationTableViewController.swift */; };
 		CD414A471C4E88B200EB1F4B /* infoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD414A461C4E88B200EB1F4B /* infoPostingViewController.swift */; };
 		CD414A491C4E8AC300EB1F4B /* locationFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD414A481C4E8AC300EB1F4B /* locationFinderViewController.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD12F6971C58B9E800CB3AA5 /* OTMExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMExtension.swift; sourceTree = "<group>"; };
 		CD1E2D481C4B9DEE00A16FB5 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		CD414A461C4E88B200EB1F4B /* infoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoPostingViewController.swift; sourceTree = "<group>"; };
 		CD414A481C4E8AC300EB1F4B /* locationFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationFinderViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				CDF28BE01C47A6E9001EF54B /* OTMClient.swift */,
 				CDF28BE21C47BD21001EF54B /* OTMHelpler.swift */,
+				CD12F6971C58B9E800CB3AA5 /* OTMExtension.swift */,
 				CDF28C031C481FC6001EF54B /* OTCLocation.swift */,
 				CD81A92E1C512EFD007A9F4F /* OTMCoreUserInfo.swift */,
 			);
@@ -369,6 +372,7 @@
 				CDF28BE91C47D2D5001EF54B /* MapViewController.swift in Sources */,
 				CDF28BE11C47A6E9001EF54B /* OTMClient.swift in Sources */,
 				CD1E2D491C4B9DEE00A16FB5 /* LocationTableViewController.swift in Sources */,
+				CD12F6981C58B9E800CB3AA5 /* OTMExtension.swift in Sources */,
 				CD414A471C4E88B200EB1F4B /* infoPostingViewController.swift in Sources */,
 				CDF28BB21C4798D8001EF54B /* AppDelegate.swift in Sources */,
 				CD414A491C4E8AC300EB1F4B /* locationFinderViewController.swift in Sources */,

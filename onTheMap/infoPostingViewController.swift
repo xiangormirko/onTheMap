@@ -17,6 +17,8 @@ import MapKit
 
 class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate {
     
+    //View to post data to Parse Backend
+    
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
@@ -103,6 +105,8 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
     }
     
     func getUserInfo(studentID: String) {
+        //Obtain public user info from Udacity
+        
         url = "https://www.udacity.com/api/users/" + studentID
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
 
@@ -164,7 +168,13 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
         
     }
     
+    @IBAction func cancelView(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func postUserInfo(studentInfo: OTMCoreUserInfo) {
+        
+        // posting user info to API
 
         let httpB = "{\"uniqueKey\": \"\(studentInfo.uniqueKey!)\", \"firstName\": \"\(studentInfo.firstName!)\", \"lastName\": \"\(studentInfo.lastName!)\",\"mapString\": \"\(studentInfo.mapString!)\", \"mediaURL\": \"\(studentInfo.mediaURL!)\",\"latitude\": \(studentInfo.latitude!), \"longitude\": \(studentInfo.longitude!)}"
         print(httpB)

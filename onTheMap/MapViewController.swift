@@ -13,17 +13,31 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    // Map view controller where user can see current pins
+    
     @IBOutlet weak var mapView: MKMapView!
+    let url = "https://api.parse.com/1/classes/StudentLocation"
+    let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.9000, longitude: 12.5000) , span: MKCoordinateSpanMake(100, 100))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         mapView.delegate = self
+        getData()
+    }
+    
+    
+    @IBAction func refreshMap(sender: AnyObject) {
+        getData()
+    }
+    
+    @IBAction func logoutButtonTouch(sender: AnyObject) {
+        logoutFunction()
+    }
+    
+    
+    func getData() {
         
         var annotations = [MKPointAnnotation]()
-        let url = "https://api.parse.com/1/classes/StudentLocation"
-        
         OTMClient.sharedInstance().getRequestParse(url) { result, error in
             if let results = result["results"] as? [[String : AnyObject]] {
                 let locations = OTMLocation.locationsFromResults(results)
@@ -52,15 +66,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     // Finally we place the annotation in an array of annotations.
                     annotations.append(annotation)
                     self.mapView.addAnnotations(annotations)
-
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.mapView.setRegion(self.region, animated: true)
+                    }
+                    
+                    
                 }
             } else {
                 print(error)
             }
             
         }
-
-        
     }
     
 
@@ -88,7 +104,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
             if let toOpen = view.annotation?.subtitle! {
-                app.openURL(NSURL(string: toOpen)!)
+                if let url = NSURL(string: toOpen) {
+                    if UIApplication.sharedApplication().canOpenURL(url) {
+                        app.openURL(NSURL(string: toOpen)!)
+                    } else {
+                        print("not a valid url")
+                    }
+                }
             }
         }
     }

@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         self.addKeyboardDismissRecognizer()
         self.subscribeToKeyboardNotifications()
+        self.logoView.contentMode = UIViewContentMode.ScaleAspectFit
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -57,10 +58,13 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTouch(sender: AnyObject) {
+        // textfields validation
         if usernameTextField.text!.isEmpty {
             debugTextLabel.text = "Username Empty."
+            debugTextLabel.hidden = false
         } else if passwordTextField.text!.isEmpty {
             debugTextLabel.text = "Password Empty."
+            debugTextLabel.hidden = false
         } else {
             
             self.setUIEnabled(enabled: false)
@@ -70,6 +74,7 @@ class LoginViewController: UIViewController {
     }
     
     func getSessionID() {
+        // Get session function throught Udacity API
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -87,6 +92,7 @@ class LoginViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.setUIEnabled(enabled: true)
                     self.debugTextLabel.text = "Login Failed (Login Step)."
+                    self.debugTextLabel.hidden = false
                 }
                 print("There was an error with your request: \(error)")
                 return
@@ -137,27 +143,45 @@ class LoginViewController: UIViewController {
                 print("Login failed.")
                 return
             }
-            if let studentNumber = parsedResult["account"]!!["key"] as? String {
+            
+            
+            if let studentNumber = parsedResult["account"]??["key"] as? String {
                 
                 self.appDelegate.studentID = studentNumber
                 print(self.appDelegate.studentID)
+                /* 6. Use the data! */
+                self.completeLogin()
             } else {
                 print("no student id found")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.debugTextLabel.text = "Login failed, check your credentials"
+                    self.debugTextLabel.hidden = false
+                    self.setUIEnabled(enabled: true)
+                }
+
             }
 
-            /* 6. Use the data! */
-            self.completeLogin()
+
 
         }
         task.resume()
         
     }
+    @IBAction func openSignUp(sender: AnyObject) {
+        // Open udacity sign up page if button touched
+        let app = UIApplication.sharedApplication()
+        app.openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signin")!)
+
+    }
     
     func completeLogin() {
+        // complete login process and present next viewcontroller
         dispatch_async(dispatch_get_main_queue(), {
             self.debugTextLabel.text = ""
             self.setUIEnabled(enabled: true)
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ManagerNavigationController") as! UITabBarController
+            self.usernameTextField.text = nil
+            self.passwordTextField.text = nil
             self.presentViewController(controller, animated: true, completion: nil)
         })
     }

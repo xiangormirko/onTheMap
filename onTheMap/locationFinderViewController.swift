@@ -12,6 +12,8 @@ import UIKit
 
 class locationFinderViewController: UIViewController, UITextFieldDelegate  {
     
+    // user type in location to be searched
+    
     @IBOutlet weak var locationTextBox: UITextField!
     @IBOutlet weak var findOnMapButton: UIButton!
     
@@ -48,6 +50,10 @@ class locationFinderViewController: UIViewController, UITextFieldDelegate  {
         } else {
             print("error")
         }
+    }
+    
+    @IBAction func cancelView(sender: AnyObject) {
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     func tap(gesture: UITapGestureRecognizer) {
