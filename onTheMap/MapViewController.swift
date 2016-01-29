@@ -16,18 +16,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // Map view controller where user can see current pins
     
     @IBOutlet weak var mapView: MKMapView!
-    let url = "https://api.parse.com/1/classes/StudentLocation"
     let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.9000, longitude: 12.5000) , span: MKCoordinateSpanMake(100, 100))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        getData()
+        getDataMap()
     }
     
     
     @IBAction func refreshMap(sender: AnyObject) {
-        getData()
+        getDataMap()
     }
     
     @IBAction func logoutButtonTouch(sender: AnyObject) {
@@ -35,12 +34,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    func getData() {
+    func getDataMap() {
         
         var annotations = [MKPointAnnotation]()
-        OTMClient.sharedInstance().getRequestParse(url) { result, error in
+        OTMClient.sharedInstance().getRequestParse(OTMClient.Constants.ParseStudentLocUrl) { result, error in
             if let results = result["results"] as? [[String : AnyObject]] {
                 let locations = OTMLocation.locationsFromResults(results)
+                
+                // update locations with sorted data
+                OTMStudentInfo.sharedInstance().locations = locations.sort({$0.createdAt > $1.createdAt})
                 
                 
                 for location in locations {
@@ -74,6 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
             } else {
                 print(error)
+                self.presentAlert("Error encountered in fetching data")
             }
             
         }

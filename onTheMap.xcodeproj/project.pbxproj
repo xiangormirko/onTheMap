@@ -12,6 +12,8 @@
 		CD414A471C4E88B200EB1F4B /* infoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD414A461C4E88B200EB1F4B /* infoPostingViewController.swift */; };
 		CD414A491C4E8AC300EB1F4B /* locationFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD414A481C4E8AC300EB1F4B /* locationFinderViewController.swift */; };
 		CD81A92F1C512EFD007A9F4F /* OTMCoreUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD81A92E1C512EFD007A9F4F /* OTMCoreUserInfo.swift */; };
+		CDBD720B1C5B308600412033 /* OTMStudentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD720A1C5B308600412033 /* OTMStudentInfo.swift */; };
+		CDBD720D1C5B37BA00412033 /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD720C1C5B37BA00412033 /* OTMConstants.swift */; };
 		CDF28BB21C4798D8001EF54B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BB11C4798D8001EF54B /* AppDelegate.swift */; };
 		CDF28BB41C4798D8001EF54B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF28BB31C4798D8001EF54B /* LoginViewController.swift */; };
 		CDF28BB71C4798D8001EF54B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF28BB51C4798D8001EF54B /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		CD414A461C4E88B200EB1F4B /* infoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoPostingViewController.swift; sourceTree = "<group>"; };
 		CD414A481C4E8AC300EB1F4B /* locationFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationFinderViewController.swift; sourceTree = "<group>"; };
 		CD81A92E1C512EFD007A9F4F /* OTMCoreUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMCoreUserInfo.swift; sourceTree = "<group>"; };
+		CDBD720A1C5B308600412033 /* OTMStudentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMStudentInfo.swift; sourceTree = "<group>"; };
+		CDBD720C1C5B37BA00412033 /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
 		CDF28BAE1C4798D8001EF54B /* onTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF28BB11C4798D8001EF54B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDF28BB31C4798D8001EF54B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				CD12F6971C58B9E800CB3AA5 /* OTMExtension.swift */,
 				CDF28C031C481FC6001EF54B /* OTCLocation.swift */,
 				CD81A92E1C512EFD007A9F4F /* OTMCoreUserInfo.swift */,
+				CDBD720A1C5B308600412033 /* OTMStudentInfo.swift */,
+				CDBD720C1C5B37BA00412033 /* OTMConstants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			files = (
 				CD81A92F1C512EFD007A9F4F /* OTMCoreUserInfo.swift in Sources */,
 				CDF28C041C481FC6001EF54B /* OTCLocation.swift in Sources */,
+				CDBD720D1C5B37BA00412033 /* OTMConstants.swift in Sources */,
 				CDF28BB41C4798D8001EF54B /* LoginViewController.swift in Sources */,
 				CDF28BE91C47D2D5001EF54B /* MapViewController.swift in Sources */,
 				CDF28BE11C47A6E9001EF54B /* OTMClient.swift in Sources */,
@@ -377,6 +384,7 @@
 				CDF28BB21C4798D8001EF54B /* AppDelegate.swift in Sources */,
 				CD414A491C4E8AC300EB1F4B /* locationFinderViewController.swift in Sources */,
 				CDF28BE31C47BD21001EF54B /* OTMHelpler.swift in Sources */,
+				CDBD720B1C5B308600412033 /* OTMStudentInfo.swift in Sources */,
 				CDF28BE51C47CCC1001EF54B /* OTMView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

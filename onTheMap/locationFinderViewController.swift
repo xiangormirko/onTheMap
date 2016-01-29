@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import MapKit
 
 class locationFinderViewController: UIViewController, UITextFieldDelegate  {
     
@@ -43,9 +43,29 @@ class locationFinderViewController: UIViewController, UITextFieldDelegate  {
     
     func findOnMap(location: String?) {
         if let location = location {
-            let postingController = self.storyboard!.instantiateViewControllerWithIdentifier("infoPostingViewController") as! infoPostingViewController
-            postingController.location = location
-            self.navigationController!.pushViewController(postingController, animated: true)
+            let address = location
+            findOnMapButton.setTitle("Searching...", forState: UIControlState.Normal)
+            let geocoder = CLGeocoder()
+            
+            geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+                if((error) != nil){
+                    print("Error", error)
+                    self.presentAlert("There was a geocoding error, please go back and try again")
+                    self.findOnMapButton.setTitle("Find On Map", forState: UIControlState.Normal)
+                    
+                }
+                if let placemark = placemarks?.first {
+                    let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                    let postingController = self.storyboard!.instantiateViewControllerWithIdentifier("infoPostingViewController") as! infoPostingViewController
+                    postingController.placemark = placemark
+                    postingController.location = coordinates
+                    postingController.locationString = address
+                    self.findOnMapButton.setTitle("Find On Map", forState: UIControlState.Normal)
+                    self.navigationController!.pushViewController(postingController, animated: true)
+
+                }
+            })
+
             
         } else {
             print("error")

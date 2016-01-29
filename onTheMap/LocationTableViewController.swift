@@ -14,8 +14,6 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var tableView: UITableView!
 
-    var locations = [OTMLocation]()
-    let url = "https://api.parse.com/1/classes/StudentLocation"
 
     
     override func viewDidLoad() {
@@ -39,15 +37,15 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: Table View Data Source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.locations.count
-        
+
+        return OTMStudentInfo.sharedInstance().locations.count
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // reloading table data after change
         let cell = tableView.dequeueReusableCellWithIdentifier("loc")!
-        let location = self.locations[indexPath.row]
+        let location = OTMStudentInfo.sharedInstance().locations[indexPath.row]
         // Set the name and image
         cell.textLabel?.text = location.firstName! + location.lastName!
         cell.imageView!.image = UIImage(named: "locs")
@@ -65,18 +63,18 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func getData() {
-        OTMClient.sharedInstance().getRequestParse(url) { result, error in
+        OTMClient.sharedInstance().getRequestParse(OTMClient.Constants.ParseStudentLocUrl) { result, error in
             if let results = result["results"] as? [[String : AnyObject]] {
                 let locationsFromResults = OTMLocation.locationsFromResults(results)
-                self.locations = locationsFromResults
+                OTMStudentInfo.sharedInstance().locations = locationsFromResults.sort({$0.createdAt > $1.createdAt})
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
-                    print("reloading")
                 }
                 
                 
             } else {
                 print(error)
+                self.presentAlert("Error encountered in fetching data")
             }
             
         }
@@ -90,7 +88,7 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // present detail view when a cell is pressed
         let app = UIApplication.sharedApplication()
-        let location = self.locations[indexPath.row]
+        let location = OTMStudentInfo.sharedInstance().locations[indexPath.row]
         if let toOpen = location.mediaURL {
             if let url = NSURL(string: toOpen) {
                 if UIApplication.sharedApplication().canOpenURL(url) {

@@ -24,12 +24,13 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
     @IBOutlet weak var submitButton: UIButton!
     
     
-    var location: String? = nil
+    var location: CLLocationCoordinate2D? = nil
     var span = MKCoordinateSpanMake(1, 1)
-    
-    var url = "https://www.udacity.com/api/users/"
+    var placemark: CLPlacemark? = nil
+    var locationString: String? = nil
+    var mediaUrl: String? = nil
+
     var appDelegate: AppDelegate!
-    var studentID: String? = nil
     var latitude: Double? = nil
     var longitude: Double? = nil
     
@@ -41,9 +42,7 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
         textView.text = "Insert your comment or URL"
         textView.textColor = UIColor.lightGrayColor()
         textView.textAlignment = .Center
-        
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        studentID = self.appDelegate.studentID
 
 
         
@@ -52,28 +51,24 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let address = location
-        let geocoder = CLGeocoder()
         
-        geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
-            if((error) != nil){
-                print("Error", error)
-            }
-            if let placemark = placemarks?.first {
-                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-                self.latitude = placemark.location?.coordinate.latitude
-                self.longitude = placemark.location?.coordinate.longitude
+
+            if location != nil {
+                self.latitude = location?.latitude
+                self.longitude = location?.longitude
                 
-                let region = MKCoordinateRegion(center: coordinates, span: self.span)
+                let region = MKCoordinateRegion(center: location!, span: self.span)
                 self.mapView.setRegion(region, animated: true)
-                self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
-            }
-        })
+                self.mapView.addAnnotation(MKPlacemark(placemark: placemark!))
+            } else {
+                self.presentAlert("Location error, please go back and try again")
+        }
+        
     }
     
     
     @IBAction func postLocation(sender: AnyObject) {
-        getUserInfo(self.studentID!)
+        getUserInfo(OTMStudentInfo.sharedInstance().studentID, location: locationString!, mediaUrl: textView.text, long: self.longitude!, lat: self.latitude!)
         self.submitButton.enabled = false
         self.submitButton.backgroundColor = UIColor.lightGrayColor()
         self.submitButton.setTitle("Wait...", forState: .Normal)
@@ -103,92 +98,13 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
         }
         return true
     }
-    
-    func getUserInfo(studentID: String) {
-        //Obtain public user info from Udacity
-        
-        url = "https://www.udacity.com/api/users/" + studentID
-        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
 
-        
-        let session = NSURLSession.sharedSession()
-        /* 4. Make the request */
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                print("There was an error with your request: \(error)")
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                print("No data was returned by the request!")
-                return
-            }
-            
-            /* 5. Parse the data */
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            
-            
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
-            } catch {
-                print("Could not parse the data as JSON: '\(data)'")
-                return
-            }
-            
-            /* GUARD: Did Udacity return an error? */
-            guard (parsedResult.objectForKey("status_code") == nil) else {
-                print("Udacity returned an error. See the status_code and status_message in \(parsedResult)")
-                return
-            }
-            
-            
-            /* GUARD: Is the "user" key in parsedResult? */
-            guard let results = parsedResult["user"] else {
-                print("Info retrieval failed")
-                return
-            }
-            /* 6. Use the data! */
-            self.appDelegate.studentInfo.firstName = results!["first_name"] as? String
-            self.appDelegate.studentInfo.lastName = results!["last_name"] as? String
-            self.appDelegate.studentInfo.mapString = self.location 
-            self.appDelegate.studentInfo.uniqueKey = self.appDelegate.studentID
-            self.appDelegate.studentInfo.mediaURL = self.textView.text
-            self.appDelegate.studentInfo.longitude = self.longitude
-            self.appDelegate.studentInfo.latitude = self.latitude
-            
-            print(self.appDelegate.studentInfo)
-            self.postUserInfo(self.appDelegate.studentInfo)
-            
-        }
-        task.resume()
-        
-    }
     
     @IBAction func cancelView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func postUserInfo(studentInfo: OTMCoreUserInfo) {
-        
-        // posting user info to API
 
-        let httpB = "{\"uniqueKey\": \"\(studentInfo.uniqueKey!)\", \"firstName\": \"\(studentInfo.firstName!)\", \"lastName\": \"\(studentInfo.lastName!)\",\"mapString\": \"\(studentInfo.mapString!)\", \"mediaURL\": \"\(studentInfo.mediaURL!)\",\"latitude\": \(studentInfo.latitude!), \"longitude\": \(studentInfo.longitude!)}"
-        print(httpB)
-        OTMClient.sharedInstance().postRequestParse(httpB) { result, error in
-            if result["objectId"] != nil {
-                print("dismissing view controller")
-                print(result)
-                self.dismissViewControllerAnimated(false, completion: nil)
-                
-            }
-        }
-        
-    }
-    
     
 
 }
