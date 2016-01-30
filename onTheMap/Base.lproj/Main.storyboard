@@ -196,8 +196,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKs-ur-GXg">
                                 <rect key="frame" x="233" y="87" width="135" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="B8P-uD-DHy"/>
-                                    <constraint firstAttribute="width" constant="135" id="mk8-CI-OmD"/>
+                                    <constraint firstAttribute="width" constant="135" id="98O-YG-Qfo"/>
+                                    <constraint firstAttribute="height" constant="21" id="vad-Tt-veq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -206,8 +206,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmX-ob-ZAz">
                                 <rect key="frame" x="271" y="145" width="58" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Loc-54-jSN"/>
-                                    <constraint firstAttribute="width" constant="58" id="wWH-5b-hTL"/>
+                                    <constraint firstAttribute="width" constant="58" id="IQR-be-A7r"/>
+                                    <constraint firstAttribute="height" constant="21" id="wFG-ZX-gNG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -216,8 +216,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STUDYING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Slw-lA-lLI">
                                 <rect key="frame" x="247" y="116" width="106" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="106" id="pda-Wq-fQX"/>
-                                    <constraint firstAttribute="height" constant="21" id="sF8-hp-lFJ"/>
+                                    <constraint firstAttribute="height" constant="21" id="5Uy-Vv-K4E"/>
+                                    <constraint firstAttribute="width" constant="106" id="eE0-wL-5D3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -226,7 +226,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VqR-gx-F5k">
                                 <rect key="frame" x="157" y="246" width="286" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="286" id="qV7-aQ-2UH"/>
+                                    <constraint firstAttribute="width" constant="286" id="3hX-Fg-gB4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -234,8 +234,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uH4-Vf-cgu">
                                 <rect key="frame" x="219" y="462" width="162" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="162" id="WpX-MD-W6G"/>
-                                    <constraint firstAttribute="height" constant="30" id="bW2-68-5rG"/>
+                                    <constraint firstAttribute="height" constant="30" id="CrP-ab-uqF"/>
+                                    <constraint firstAttribute="width" constant="162" id="cTz-2K-RRU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                 <state key="normal" title="Find On Map">
@@ -245,19 +245,24 @@
                                     <action selector="findButtonTouchUp:" destination="OXH-xq-IVp" eventType="touchUpInside" id="Wda-6F-Q7s"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="IEe-jq-4f3">
+                                <rect key="frame" x="290" y="329" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686270000003" green="0.58039215690000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="kmX-ob-ZAz" firstAttribute="centerX" secondItem="Slw-lA-lLI" secondAttribute="centerX" id="0T5-y7-exl"/>
-                            <constraint firstItem="Slw-lA-lLI" firstAttribute="top" secondItem="BKs-ur-GXg" secondAttribute="bottom" constant="8" symbolic="YES" id="Cez-4G-LaR"/>
-                            <constraint firstItem="BKs-ur-GXg" firstAttribute="top" secondItem="Sz5-hS-Ml7" secondAttribute="bottom" constant="23" id="D3Q-g1-fvR"/>
-                            <constraint firstItem="Slw-lA-lLI" firstAttribute="centerX" secondItem="BKs-ur-GXg" secondAttribute="centerX" id="KgV-h6-vUl"/>
-                            <constraint firstItem="VqR-gx-F5k" firstAttribute="centerX" secondItem="kmX-ob-ZAz" secondAttribute="centerX" id="VzB-hT-IrM"/>
-                            <constraint firstItem="uH4-Vf-cgu" firstAttribute="centerX" secondItem="Mnh-Ib-ZUP" secondAttribute="centerX" id="cuq-DM-kYC"/>
-                            <constraint firstItem="kmX-ob-ZAz" firstAttribute="top" secondItem="Slw-lA-lLI" secondAttribute="bottom" constant="8" symbolic="YES" id="ddl-mR-LQy"/>
-                            <constraint firstItem="VqR-gx-F5k" firstAttribute="centerX" secondItem="uH4-Vf-cgu" secondAttribute="centerX" id="eKb-iv-ODU"/>
-                            <constraint firstItem="kMk-6E-Qqk" firstAttribute="top" secondItem="uH4-Vf-cgu" secondAttribute="bottom" constant="108" id="fGY-HI-rAH"/>
-                            <constraint firstItem="VqR-gx-F5k" firstAttribute="top" secondItem="kmX-ob-ZAz" secondAttribute="bottom" constant="80" id="m1b-aZ-um1"/>
+                            <constraint firstItem="BKs-ur-GXg" firstAttribute="top" secondItem="Sz5-hS-Ml7" secondAttribute="bottom" constant="23" id="2rP-nh-FbC"/>
+                            <constraint firstItem="Slw-lA-lLI" firstAttribute="centerX" secondItem="kmX-ob-ZAz" secondAttribute="centerX" id="3AB-bB-ADj"/>
+                            <constraint firstItem="kmX-ob-ZAz" firstAttribute="top" secondItem="Slw-lA-lLI" secondAttribute="bottom" constant="8" symbolic="YES" id="Q7y-jj-Pe0"/>
+                            <constraint firstItem="kMk-6E-Qqk" firstAttribute="top" secondItem="uH4-Vf-cgu" secondAttribute="bottom" constant="108" id="VRp-Mr-Bxg"/>
+                            <constraint firstItem="VqR-gx-F5k" firstAttribute="centerX" secondItem="kmX-ob-ZAz" secondAttribute="centerX" id="h3u-DC-e0v"/>
+                            <constraint firstItem="uH4-Vf-cgu" firstAttribute="centerX" secondItem="IEe-jq-4f3" secondAttribute="centerX" id="jj1-JX-3vJ"/>
+                            <constraint firstItem="IEe-jq-4f3" firstAttribute="top" secondItem="VqR-gx-F5k" secondAttribute="bottom" constant="53" id="kTY-SP-kpR"/>
+                            <constraint firstItem="Slw-lA-lLI" firstAttribute="centerX" secondItem="BKs-ur-GXg" secondAttribute="centerX" id="oM0-uj-9Sz"/>
+                            <constraint firstItem="IEe-jq-4f3" firstAttribute="centerX" secondItem="VqR-gx-F5k" secondAttribute="centerX" id="plO-GS-XDS"/>
+                            <constraint firstItem="VqR-gx-F5k" firstAttribute="top" secondItem="kmX-ob-ZAz" secondAttribute="bottom" constant="80" id="twE-Nt-Fbg"/>
+                            <constraint firstItem="VqR-gx-F5k" firstAttribute="centerX" secondItem="Mnh-Ib-ZUP" secondAttribute="centerX" id="xem-YQ-Lb9"/>
+                            <constraint firstItem="Slw-lA-lLI" firstAttribute="top" secondItem="BKs-ur-GXg" secondAttribute="bottom" constant="8" symbolic="YES" id="zpM-7x-KCQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5cJ-XD-X8T">
@@ -268,6 +273,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="IEe-jq-4f3" id="aXI-jW-tgM"/>
                         <outlet property="findOnMapButton" destination="uH4-Vf-cgu" id="9KZ-o4-CWJ"/>
                         <outlet property="locationTextBox" destination="VqR-gx-F5k" id="D3c-gI-RyT"/>
                     </connections>

@@ -66,7 +66,7 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
         OTMClient.sharedInstance().getRequestParse(OTMClient.Constants.ParseStudentLocUrl) { result, error in
             if let results = result["results"] as? [[String : AnyObject]] {
                 let locationsFromResults = OTMLocation.locationsFromResults(results)
-                OTMStudentInfo.sharedInstance().locations = locationsFromResults.sort({$0.createdAt > $1.createdAt})
+                OTMStudentInfo.sharedInstance().locations = locationsFromResults.sort({$0.updatedAt > $1.updatedAt})
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                 }

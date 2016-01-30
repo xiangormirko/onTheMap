@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class OTMClient : NSObject {
 
@@ -37,7 +38,10 @@ class OTMClient : NSObject {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                print("There was an error with your request(2): \(error)")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.displayAlert("There was an error, check your connection and try again")
+                }
                 return
             }
             
@@ -45,6 +49,9 @@ class OTMClient : NSObject {
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 if let response = response as? NSHTTPURLResponse {
                     print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.displayAlert("There was a server error, check your connection and try again")
+                    }
                 } else if let response = response {
                     print("Your request returned an invalid response! Response: \(response)!")
                 } else {
@@ -86,7 +93,10 @@ class OTMClient : NSObject {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                print("There was an error with your request(1): \(error)")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.displayAlert("There was an error, check your connection and try again")
+                }
                 return
             }
             
@@ -94,6 +104,9 @@ class OTMClient : NSObject {
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 if let response = response as? NSHTTPURLResponse {
                     print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.displayAlert("There was a server error, check your connection and try again")
+                    }
                 } else if let response = response {
                     print("Your request returned an invalid response! Response: \(response)!")
                 } else {
@@ -120,7 +133,17 @@ class OTMClient : NSObject {
         
     }
     
-    
+    func displayAlert(message: String) {
+        var topController = UIApplication.sharedApplication().keyWindow!.rootViewController! as UIViewController
+        
+        while ((topController.presentedViewController) != nil) {
+            topController = topController.presentedViewController!;
+        }
+        let alertController = UIAlertController(title: "Apologies", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        
+        topController.presentViewController(alertController, animated:true, completion:nil)
+    }
     
     
 
@@ -159,7 +182,6 @@ class OTMClient : NSObject {
         return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
     }
 
-    
     // MARK: Shared Instance
     
     class func sharedInstance() -> OTMClient {

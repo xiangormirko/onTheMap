@@ -35,9 +35,13 @@ extension UIViewController {
             
             if decodedData != nil {
                 print(decodedData)
+                dispatch_async(dispatch_get_main_queue()) {
                 self.dismissViewControllerAnimated(true, completion: nil)
+                }
             } else {
+                dispatch_async(dispatch_get_main_queue()) {
                 self.presentAlert("Logout error encountered, please try again")
+                }
             }
             
         }
@@ -48,8 +52,9 @@ extension UIViewController {
         let alertController = UIAlertController(title: "Apologies", message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
-        
+        dispatch_async(dispatch_get_main_queue()) {
         self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     func getUserInfo(studentID: String, location: String, mediaUrl: String, long: Double, lat: Double ) {
@@ -66,14 +71,15 @@ extension UIViewController {
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 print("There was an error with your request: \(error)")
-                self.presentAlert("There was an error")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentAlert("There was an error with your request, please check your connection and try again")
+                }
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
                 print("No data was returned by the request!")
-                self.presentAlert("There was an error with the data")
                 return
             }
             
@@ -86,14 +92,15 @@ extension UIViewController {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
             } catch {
                 print("Could not parse the data as JSON: '\(data)'")
-                self.presentAlert("Error encountered in parsing data")
                 return
             }
             
             /* GUARD: Did Udacity return an error? */
             guard (parsedResult.objectForKey("status_code") == nil) else {
                 print("Udacity returned an error. See the status_code and status_message in \(parsedResult)")
-                self.presentAlert("Server error, please try again")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentAlert("There was an error with your request, please check your connection and try again")
+                }
                 return
             }
             
@@ -101,7 +108,6 @@ extension UIViewController {
             /* GUARD: Is the "user" key in parsedResult? */
             guard let results = parsedResult["user"] else {
                 print("Info retrieval failed")
-                self.presentAlert("Error with user data")
                 return
             }
             /* 6. Use the data! */
@@ -114,7 +120,11 @@ extension UIViewController {
             OTMStudentInfo.sharedInstance().studentInfo.latitude = lat
             
             
-            self.postUserInfo(OTMStudentInfo.sharedInstance().studentInfo)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.postUserInfo(OTMStudentInfo.sharedInstance().studentInfo)
+            }
+            
+            
             
         }
         task.resume()
@@ -131,11 +141,18 @@ extension UIViewController {
         OTMClient.sharedInstance().postRequestParse(httpB) { result, error in
             if result["objectId"] != nil {
                 print("your post was successful")
-                self.dismissViewControllerAnimated(false, completion: nil)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.dismissViewControllerAnimated(false, completion: nil)
+                }
+                
+                
             }
             
             if (error != nil) {
-                self.presentAlert("Failed post, please try again")
+                print("Failed post, please try again")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentAlert("There was an error with your request, please check your connection and try again")
+                }
             }
         }
         

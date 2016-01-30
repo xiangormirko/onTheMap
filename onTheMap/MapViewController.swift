@@ -21,12 +21,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        getDataMap()
+        do {
+            try getDataMap()
+        } catch _ {
+            self.presentAlert("hello")
+        }
     }
     
     
     @IBAction func refreshMap(sender: AnyObject) {
-        getDataMap()
+        do {
+            try getDataMap()
+        } catch _ {
+            self.presentAlert("hello")
+        }
     }
     
     @IBAction func logoutButtonTouch(sender: AnyObject) {
@@ -34,10 +42,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    func getDataMap() {
+    func getDataMap() throws {
         
         var annotations = [MKPointAnnotation]()
         OTMClient.sharedInstance().getRequestParse(OTMClient.Constants.ParseStudentLocUrl) { result, error in
+            
+            
+            guard (error == nil) else {
+                self.presentAlert("There was an error, please check your network and try again")
+                print(error)
+                return
+            }
+            
+            guard (result.objectForKey("status_code") == nil) else {
+                self.presentAlert("Apologies there was an error, check your connection and try again")
+                return
+            }
+            
+            
             if let results = result["results"] as? [[String : AnyObject]] {
                 let locations = OTMLocation.locationsFromResults(results)
                 
@@ -80,6 +102,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             
         }
+    
     }
     
 

@@ -51,7 +51,7 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        postEnabled()
 
             if location != nil {
                 self.latitude = location?.latitude
@@ -68,11 +68,9 @@ class infoPostingViewController: UIViewController, MKMapViewDelegate, UITextView
     
     
     @IBAction func postLocation(sender: AnyObject) {
+        postDisabled()
         getUserInfo(OTMStudentInfo.sharedInstance().studentID, location: locationString!, mediaUrl: textView.text, long: self.longitude!, lat: self.latitude!)
-        self.submitButton.enabled = false
-        self.submitButton.backgroundColor = UIColor.lightGrayColor()
-        self.submitButton.setTitle("Wait...", forState: .Normal)
-        
+
     }
     
     func textViewDidBeginEditing(textView: UITextView) {

@@ -16,13 +16,11 @@ class locationFinderViewController: UIViewController, UITextFieldDelegate  {
     
     @IBOutlet weak var locationTextBox: UITextField!
     @IBOutlet weak var findOnMapButton: UIButton!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
 
     var locationString: String? = nil
 
-    
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +33,9 @@ class locationFinderViewController: UIViewController, UITextFieldDelegate  {
     
     }
     
+    override func viewWillAppear(animated: Bool) {
+        activityIndicatorView.hidden = true
+    }
     @IBAction func findButtonTouchUp(sender: AnyObject) {
         locationString = locationTextBox.text
         findOnMap(locationString)
@@ -44,14 +45,14 @@ class locationFinderViewController: UIViewController, UITextFieldDelegate  {
     func findOnMap(location: String?) {
         if let location = location {
             let address = location
-            findOnMapButton.setTitle("Searching...", forState: UIControlState.Normal)
+            activityDisabled()
             let geocoder = CLGeocoder()
             
             geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
                 if((error) != nil){
                     print("Error", error)
                     self.presentAlert("There was a geocoding error, please go back and try again")
-                    self.findOnMapButton.setTitle("Find On Map", forState: UIControlState.Normal)
+                    self.activityEnabled()
                     
                 }
                 if let placemark = placemarks?.first {
@@ -60,7 +61,7 @@ class locationFinderViewController: UIViewController, UITextFieldDelegate  {
                     postingController.placemark = placemark
                     postingController.location = coordinates
                     postingController.locationString = address
-                    self.findOnMapButton.setTitle("Find On Map", forState: UIControlState.Normal)
+                    self.activityEnabled()
                     self.navigationController!.pushViewController(postingController, animated: true)
 
                 }
